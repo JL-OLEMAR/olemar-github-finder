@@ -1,13 +1,15 @@
+import { types } from '../../types'
+
 export function githubReducer (state, action) {
   switch (action.type) {
-    case 'GET_USERS':
+    case types.getUsers:
       return {
         ...state,
         users: action.payload,
         loading: false
       }
 
-    case 'GET_USER_AND_REPOS':
+    case types.getReposByUser:
       return {
         ...state,
         user: action.payload.user,
@@ -15,13 +17,13 @@ export function githubReducer (state, action) {
         loading: false
       }
 
-    case 'SET_LOADING':
+    case types.setLoading:
       return {
         ...state,
         loading: true
       }
 
-    case 'CLEAR_USERS':
+    case types.clearUsers:
       return {
         ...state,
         users: []
