@@ -1,4 +1,6 @@
-* {
+*,
+*:before,
+*:after {
   box-sizing: border-box;
 }
 
@@ -7,6 +9,11 @@ body {
   font-family: -apple-system, sans-serif;
 }
 
-code {
-  font-family: monospace;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.custom-card-image .card.image-full:before {
+  border-radius: 0.5rem;
+  opacity: 0.45;
 }
