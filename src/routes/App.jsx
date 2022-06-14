@@ -1,7 +1,7 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { GithubProvider } from '../context'
 import { Layout } from '../components'
-import { About, Home, User } from '../pages'
+import { About, Home, NotFound, User } from '../pages'
 
 export function App () {
   return (
@@ -12,7 +12,8 @@ export function App () {
             <Route path='/' element={<Home />} />
             <Route path='/about' element={<About />} />
             <Route path='/user/:login' element={<User />} />
-            <Route element={<Navigate to='/' />} path='*' /> {/* FIXME: Change to page NotFound */}
+            <Route path='/notfound' element={<NotFound />} />
+            <Route path='*' element={<NotFound />} />
           </Routes>
         </Layout>
       </GithubProvider>
