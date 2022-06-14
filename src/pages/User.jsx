@@ -22,8 +22,8 @@ export function User () {
     getUser()
   }, [params.login])
 
-  // NOTE: check for valid url to users website
   const websiteUrl = user.blog?.startsWith('http') ? user.blog : `https://${user.blog}`
+  const lastRepos = repos.sort((a, b) => (new Date(b.created_at).getTime() - new Date(a.created_at).getTime()))
 
   if (loading) return <Spinner />
 
@@ -105,7 +105,6 @@ export function User () {
         </div>
       </div>
 
-      {/* ----------------------- */}
       <div className='w-full py-5 mb-6 rounded-lg shadow-md bg-base-100 stats'>
         <div className='grid grid-cols-1 md:grid-cols-3'>
           <div className='stat'>
@@ -150,8 +149,7 @@ export function User () {
         </div>
       </div>
 
-      {/* ----------------------- */}
-      <RepoList repos={repos} />
+      <RepoList repos={lastRepos} />
     </div>
   )
 }
