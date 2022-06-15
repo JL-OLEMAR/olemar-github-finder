@@ -1,18 +1,21 @@
 import { useContext } from 'react'
 
 import { searchUsers } from '../../services'
-import { GithubContext } from '../../context'
+import { AlertContext, GithubContext } from '../../context'
 import { useForm } from '../../hooks'
 import { types } from '../../types'
 
 export function UserSearch () {
   const [{ search }, handleInputChange, reset] = useForm({ search: '' })
   const { users, dispatch } = useContext(GithubContext)
+  const { setAlert } = useContext(AlertContext)
 
   const handleSubmit = async (evt) => {
     evt.preventDefault()
 
-    if (search !== '') {
+    if (search === '') {
+      setAlert('Please enter something', 'error')
+    } else {
       dispatch({ type: types.setLoading })
       const userSearch = await searchUsers(search)
       dispatch({ type: types.getUsers, payload: userSearch })
