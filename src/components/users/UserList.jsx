@@ -4,7 +4,7 @@ import { GithubContext } from '../../context'
 import { Spinner } from '../layout/Spinner.jsx'
 import { UserItem } from './UserItem.jsx'
 
-export function UserResults () {
+export function UserList () {
   const { users, loading } = useContext(GithubContext)
 
   loading && <Spinner />
