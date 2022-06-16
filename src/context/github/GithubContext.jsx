@@ -6,15 +6,14 @@ export const GithubContext = createContext()
 const INITIAL_STATE = {
   users: [],
   user: {},
-  repos: [],
-  loading: false
+  repos: []
 }
 
 export function GithubProvider ({ children }) {
-  const [state, dispatch] = useReducer(githubReducer, INITIAL_STATE)
+  const [state, dispatchGithub] = useReducer(githubReducer, INITIAL_STATE)
 
   return (
-    <GithubContext.Provider value={{ ...state, dispatch }}>
+    <GithubContext.Provider value={{ state, dispatchGithub }}>
       {children}
     </GithubContext.Provider>
   )

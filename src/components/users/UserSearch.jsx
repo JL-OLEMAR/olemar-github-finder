@@ -7,18 +7,24 @@ import { types } from '../../types'
 
 export function UserSearch () {
   const [{ search }, handleInputChange, reset] = useForm({ search: '' })
-  const { users, dispatch } = useContext(GithubContext)
+  const { state: { users }, dispatchGithub } = useContext(GithubContext)
   const { dispatchUI } = useContext(UIContext)
+
+  const onUISetAlert = (msg, type) => {
+    dispatchUI({ type: types.uiSetAlert, payload: { msg, type } })
+    setTimeout(() => dispatchUI({ type: types.uiRemoveAlert }), 3000)
+  }
 
   const handleSubmit = async (evt) => {
     evt.preventDefault()
 
     if (search === '') {
-      dispatchUI('Please enter something', 'error')
+      onUISetAlert('Please enter something', 'error')
     } else {
-      dispatch({ type: types.setLoading })
+      dispatchUI({ type: types.uiStartLoading })
       const userSearch = await searchUsers(search)
-      dispatch({ type: types.getUsers, payload: userSearch })
+      dispatchGithub({ type: types.githubGetUsers, payload: userSearch })
+      dispatchUI({ type: types.uiFinishLoading })
       reset()
     }
   }
@@ -52,7 +58,7 @@ export function UserSearch () {
       {/* Button Clear */}
       {users.length > 0 && (
         <button
-          onClick={() => dispatch({ type: types.clearUsers })}
+          onClick={() => dispatchGithub({ type: types.githubClearUsers })}
           className='btn btn-outline btn-lg'
           type='button'
         >

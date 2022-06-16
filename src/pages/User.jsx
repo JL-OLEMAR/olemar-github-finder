@@ -3,25 +3,28 @@ import { useParams, Link } from 'react-router-dom'
 import { FaCodepen, FaStore, FaUserFriends, FaUsers } from 'react-icons/fa'
 
 import { getReposByUser } from '../services'
-import { GithubContext } from '../context'
+import { GithubContext, UIContext } from '../context'
 import { RepoList, Spinner } from '../components'
 import { types } from '../types'
 
 export function User () {
-  const { user, repos, loading, dispatch } = useContext(GithubContext)
+  const { state, dispatchGithub } = useContext(GithubContext)
+  const { ui: { loading }, dispatchUI } = useContext(UIContext)
   const params = useParams()
 
   useEffect(() => {
-    dispatch({ type: types.setLoading })
+    dispatchUI({ type: types.uiStartLoading })
 
     const getUser = async () => {
-      const userData = await getReposByUser(params.login)
-      dispatch({ type: types.getReposByUser, payload: userData })
+      const data = await getReposByUser(params.login)
+      dispatchGithub({ type: types.githubGetReposByUser, payload: data })
+      dispatchUI({ type: types.uiFinishLoading })
     }
 
     getUser()
   }, [params.login])
 
+  const { user, repos } = state
   const websiteUrl = user.blog?.startsWith('http') ? user.blog : `https://${user.blog}`
   const lastRepos = repos.sort((a, b) => (new Date(b.created_at).getTime() - new Date(a.created_at).getTime()))
 
@@ -106,7 +109,7 @@ export function User () {
       </div>
 
       <div className='w-full py-5 mb-6 rounded-lg shadow-md bg-base-100 stats'>
-        <div className='grid grid-cols-1 md:grid-cols-3'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4'>
           <div className='stat'>
             <div className='stat-figure text-secondary'>
               <FaUsers className='text-3xl md:text-5xl' />

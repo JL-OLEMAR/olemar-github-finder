@@ -1,11 +1,12 @@
 import { useContext } from 'react'
 
-import { GithubContext } from '../../context'
+import { GithubContext, UIContext } from '../../context'
 import { Spinner } from '../layout/Spinner.jsx'
 import { UserItem } from './UserItem.jsx'
 
 export function UserList () {
-  const { users, loading } = useContext(GithubContext)
+  const { state: { users } } = useContext(GithubContext)
+  const { ui: { loading } } = useContext(UIContext)
 
   loading && <Spinner />
 
