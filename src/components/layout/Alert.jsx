@@ -1,8 +1,8 @@
 import { useContext } from 'react'
-import { AlertContext } from '../../context'
+import { UIContext } from '../../context'
 
 export function Alert () {
-  const { alert } = useContext(AlertContext)
+  const { ui: { alert } } = useContext(UIContext)
 
   return (
     <div

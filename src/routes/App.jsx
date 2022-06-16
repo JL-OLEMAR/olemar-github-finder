@@ -1,13 +1,13 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { AlertProvider, GithubProvider } from '../context'
+import { GithubProvider, UIProvider } from '../context'
 import { Alert, Layout } from '../components'
 import { About, Home, NotFound, User } from '../pages'
 
 export function App () {
   return (
-    <BrowserRouter>
-      <GithubProvider>
-        <AlertProvider>
+    <GithubProvider>
+      <UIProvider>
+        <BrowserRouter>
           <Layout>
             <Routes>
               <Route
@@ -24,8 +24,8 @@ export function App () {
               <Route path='*' element={<NotFound />} />
             </Routes>
           </Layout>
-        </AlertProvider>
-      </GithubProvider>
-    </BrowserRouter>
+        </BrowserRouter>
+      </UIProvider>
+    </GithubProvider>
   )
 }

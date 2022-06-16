@@ -4,6 +4,8 @@ export const types = {
   setLoading: '[Github] Set loading',
   clearUsers: '[Github] Clear users',
 
-  setAlert: '[Alert] Set Alert',
-  removeAlert: '[Alert] Remove Alert'
+  uiSetAlert: '[UI] Set Alert',
+  uiRemoveAlert: '[UI] Remove Alert',
+  uiStartLoading: '[UI] Start loading',
+  uiFinishLoading: '[UI] Finish loading'
 }
