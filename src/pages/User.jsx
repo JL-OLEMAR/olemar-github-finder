@@ -13,6 +13,10 @@ export function User () {
   const params = useParams()
 
   useEffect(() => {
+    window.localStorage.setItem('github', JSON.stringify(state))
+  }, [state?.user])
+
+  useEffect(() => {
     dispatchUI({ type: types.uiStartLoading })
 
     const getUser = async () => {
