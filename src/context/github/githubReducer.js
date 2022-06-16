@@ -18,8 +18,7 @@ export function githubReducer (state, action) {
     case types.githubClearUsers:
       return {
         ...state,
-        users: [],
-        repos: []
+        users: []
       }
 
     default:
