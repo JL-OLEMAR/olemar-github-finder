@@ -4,15 +4,16 @@ import { searchUsers } from '../services'
 import { GithubContext, UIContext } from '../context'
 import { types } from '../types'
 
-export function useUsers () {
-  const { state: { users }, dispatchGithub } = useContext(GithubContext)
-  const { ui: { loading }, dispatchUI } = useContext(UIContext)
+export function useUsers() {
+  const { state: { users }, dispatchGithub } = useContext(GithubContext) // eslint-disable-line
+  const { ui: { loading }, dispatchUI } = useContext(UIContext) // eslint-disable-line
 
   const handleSearchSubmit = async (searchedText) => {
     dispatchUI({ type: types.uiStartLoading })
 
     try {
       const userSearch = await searchUsers(searchedText)
+
       dispatchGithub({ type: types.githubGetUsers, payload: userSearch })
       dispatchUI({ type: types.uiFinishLoading })
     } catch (error) {

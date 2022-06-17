@@ -1,9 +1,10 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+
 import { GithubProvider, UIProvider } from '../context'
 import { Alert, Layout } from '../components'
 import { About, Home, NotFound, User } from '../pages'
 
-export function App () {
+export function App() {
   return (
     <GithubProvider>
       <UIProvider>
@@ -11,17 +12,18 @@ export function App () {
           <Layout>
             <Routes>
               <Route
-                path='/' element={
+                element={
                   <>
                     <Alert />
                     <Home />
                   </>
                 }
+                path='/'
               />
-              <Route path='/about' element={<About />} />
-              <Route path='/user/:login' element={<User />} />
-              <Route path='/notfound' element={<NotFound />} />
-              <Route path='*' element={<NotFound />} />
+              <Route element={<About />} path='/about' />
+              <Route element={<User />} path='/user/:login' />
+              <Route element={<NotFound />} path='/notfound' />
+              <Route element={<NotFound />} path='*' />
             </Routes>
           </Layout>
         </BrowserRouter>

@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types'
+
 import { RepoItem } from './RepoItem.jsx'
 
-export function RepoList ({ repos }) {
+export function RepoList({ repos }) {
   return (
-    <div className='rounded-lg shadow-lg card bg-base-100'>
+    <div className='card shadow-lg rounded-lg bg-base-100'>
       <div className='card-body'>
-        <h2 className='text-3xl my-4 font-bold card-title'>
+        <h2 className='card-title my-4 text-3xl font-bold'>
           Latest Repositories
         </h2>
         {repos.map((repo) => (

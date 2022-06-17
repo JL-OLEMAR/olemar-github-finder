@@ -1,6 +1,6 @@
 import { types } from '../../types'
 
-export function githubReducer (state, action) {
+export function githubReducer(state, action) {
   switch (action.type) {
     case types.githubGetUsers:
       return {

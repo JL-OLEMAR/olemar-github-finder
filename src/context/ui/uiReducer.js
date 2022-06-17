@@ -1,6 +1,6 @@
 import { types } from '../../types'
 
-export function uiReducer (state, action) {
+export function uiReducer(state, action) {
   switch (action.type) {
     case types.uiSetAlert:
       return {

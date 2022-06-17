@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import { axiosConfig } from './settings.js'
 
 export const getReposByUser = async (loginReq) => {

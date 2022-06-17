@@ -1,7 +1,7 @@
 import { useUsers } from '../hooks'
 import { UserList, UserSearch } from '../components'
 
-export function Home () {
+export function Home() {
   const {
     users,
     loading,
@@ -12,17 +12,24 @@ export function Home () {
 
   return (
     <>
-      <div className='grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 mb-8 gap-8'>
-        <UserSearch onUISetAlert={handleSetAlert} onGetUsers={handleSearchSubmit} />
+      <div className='grid grid-cols-1 tablet:grid-cols-2 mb-8 gap-8 laptop:grid-cols-2 desktop:grid-cols-2'>
+        <UserSearch
+          onGetUsers={handleSearchSubmit}
+          onUISetAlert={handleSetAlert}
+        />
 
         {users.length > 0 && (
-          <button onClick={handleClearUsers} className='btn btn-outline btn-lg' type='button'>
+          <button
+            className='btn btn-outline btn-lg'
+            type='button'
+            onClick={handleClearUsers}
+          >
             Clear
           </button>
         )}
       </div>
 
-      <UserList users={users} loading={loading} />
+      <UserList loading={loading} users={users} />
     </>
   )
 }

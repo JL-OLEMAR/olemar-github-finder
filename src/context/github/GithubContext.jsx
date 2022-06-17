@@ -1,4 +1,5 @@
 import { useReducer, createContext } from 'react'
+
 import { githubReducer } from './githubReducer.js'
 
 export const GithubContext = createContext()
@@ -13,8 +14,8 @@ const lazyInit = () => {
   return JSON.parse(window.localStorage.getItem('github')) || INITIAL_STATE
 }
 
-export function GithubProvider ({ children }) {
-  const [state, dispatchGithub] = useReducer(githubReducer, INITIAL_STATE, lazyInit)
+export function GithubProvider({ children }) {
+  const [state, dispatchGithub] = useReducer(githubReducer, {}, lazyInit)
 
   return (
     <GithubContext.Provider value={{ state, dispatchGithub }}>

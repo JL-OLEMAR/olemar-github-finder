@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import { axiosConfig } from './settings.js'
 
 // Promise
@@ -14,10 +13,15 @@ import { axiosConfig } from './settings.js'
 // }
 
 // Async/Await
-export async function searchUsers (text) {
+export async function searchUsers(text) {
   const params = new URLSearchParams({ q: text })
   const { data } = await axiosConfig.get(`/search/users?${params}`)
 
   if (!Array.isArray(data.items)) return []
-  return data.items.map(({ id, login, avatar_url }) => ({ id, login, avatar_url }))
+
+  return data.items.map(({ id, login, avatar_url }) => ({
+    id,
+    login,
+    avatar_url
+  }))
 }

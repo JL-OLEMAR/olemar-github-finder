@@ -1,4 +1,5 @@
 import { useReducer, createContext } from 'react'
+
 import { uiReducer } from './uiReducer.js'
 
 export const UIContext = createContext()
@@ -8,7 +9,7 @@ const INITIAL_STATE = {
   loading: false
 }
 
-export function UIProvider ({ children }) {
+export function UIProvider({ children }) {
   const [state, dispatchUI] = useReducer(uiReducer, INITIAL_STATE)
 
   return (

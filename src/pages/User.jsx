@@ -4,24 +4,24 @@ import { FaCodepen, FaStore, FaUserFriends, FaUsers } from 'react-icons/fa'
 import { useSingleUser } from '../hooks'
 import { RepoList, Spinner } from '../components'
 
-export function User () {
+export function User() {
   const { user, loading, latestRepos, websiteUrl } = useSingleUser()
 
   if (loading) return <Spinner />
 
   return (
-    <div className='w-full mx-auto lg:w-10/12'>
+    <div className='w-full mx-auto laptop:w-10/12'>
       <div className='mb-4'>
-        <Link to='/' className='btn btn-ghost'>
+        <Link className='btn btn-ghost' to='/'>
           {'< Back to search'}
         </Link>
       </div>
 
-      <div className='grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 mb-8 md:gap-8'>
-        <div className='custom-card-image mb-6 md:mb-0'>
-          <div className='rounded-lg shadow-xl card image-full'>
+      <div className='grid grid-cols-1 tablet:grid-cols-3 mb-8 tablet:gap-8 laptop:grid-cols-3 desktop:grid-cols-3'>
+        <div className='custom-card-image mb-6 tablet:mb-0'>
+          <div className='card image-full rounded-lg shadow-xl'>
             <figure>
-              <img src={user.avatar_url} alt={user.name} />
+              <img alt={user.name} src={user.avatar_url} />
             </figure>
 
             <div className='card-body justify-end'>
@@ -33,19 +33,21 @@ export function User () {
 
         <div className='col-span-2'>
           <div className='mb-6'>
-            <h1 className='text-3xl card-title'>
+            <h1 className='card-title text-3xl'>
               {user.name}
-              <div className='ml-2 mr-1 badge badge-success'>{user.type}</div>
-              {user.hireable && <div className='mx-1 badge badge-info'>Hireable</div>}
+              <div className='badge badge-success ml-2 mr-1'>{user.type}</div>
+              {user.hireable && (
+                <div className='badge badge-info mx-1'>Hireable</div>
+              )}
             </h1>
 
             <p>{user.bio}</p>
-            <div className='mt-4 card-actions'>
+            <div className='card-actions mt-4'>
               <a
-                href={user.html_url}
-                target='_blank'
-                rel='noopener noreferrer'
                 className='btn btn-outline'
+                href={user.html_url}
+                rel='noopener noreferrer'
+                target='_blank'
               >
                 Visit Github Profile
               </a>
@@ -63,7 +65,11 @@ export function User () {
               <div className='stat'>
                 <div className='stat-title text-md'>Website</div>
                 <div className='text-lg stat-value'>
-                  <a href={websiteUrl} target='_blank' rel='noopener noreferrer'>
+                  <a
+                    href={websiteUrl}
+                    rel='noopener noreferrer'
+                    target='_blank'
+                  >
                     {websiteUrl}
                   </a>
                 </div>
@@ -75,8 +81,8 @@ export function User () {
                 <div className='text-lg stat-value'>
                   <a
                     href={`https://twitter.com/${user.twitter_username}`}
-                    target='_blank'
                     rel='noopener noreferrer'
+                    target='_blank'
                   >
                     {user.twitter_username}
                   </a>
@@ -87,44 +93,44 @@ export function User () {
         </div>
       </div>
 
-      <div className='w-full py-5 mb-6 rounded-lg shadow-md bg-base-100 stats'>
-        <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4'>
+      <div className='stats w-full py-5 mb-6 rounded-lg shadow-md bg-base-100'>
+        <div className='grid grid-cols-1 mobile:grid-cols-2 desktop:grid-cols-4'>
           <div className='stat'>
             <div className='stat-figure text-secondary'>
-              <FaUsers className='text-3xl md:text-5xl' />
+              <FaUsers className='text-3xl tablet:text-5xl' />
             </div>
             <div className='stat-title pr-5'>Followers</div>
-            <div className='stat-value pr-5 text-3xl md:text-4xl'>
+            <div className='stat-value pr-5 text-3xl tablet:text-4xl'>
               {user.followers}
             </div>
           </div>
 
           <div className='stat'>
             <div className='stat-figure text-secondary'>
-              <FaUserFriends className='text-3xl md:text-5xl' />
+              <FaUserFriends className='text-3xl tablet:text-5xl' />
             </div>
             <div className='stat-title pr-5'>Following</div>
-            <div className='stat-value pr-5 text-3xl md:text-4xl'>
+            <div className='stat-value pr-5 text-3xl tablet:text-4xl'>
               {user.following}
             </div>
           </div>
 
           <div className='stat'>
             <div className='stat-figure text-secondary'>
-              <FaCodepen className='text-3xl md:text-5xl' />
+              <FaCodepen className='text-3xl tablet:text-5xl' />
             </div>
             <div className='stat-title pr-5'>Public Repos</div>
-            <div className='stat-value pr-5 text-3xl md:text-4xl'>
+            <div className='stat-value pr-5 text-3xl tablet:text-4xl'>
               {user.public_repos}
             </div>
           </div>
 
           <div className='stat'>
             <div className='stat-figure text-secondary'>
-              <FaStore className='text-3xl md:text-5xl' />
+              <FaStore className='text-3xl tablet:text-5xl' />
             </div>
             <div className='stat-title pr-5'>Public Gists</div>
-            <div className='stat-value pr-5 text-3xl md:text-4xl'>
+            <div className='stat-value pr-5 text-3xl tablet:text-4xl'>
               {user.public_gists}
             </div>
           </div>
