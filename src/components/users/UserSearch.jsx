@@ -7,14 +7,15 @@ export function UserSearch({ onUISetAlert, onGetUsers }) {
 
   const onSearchSubmit = async (evt) => {
     evt.preventDefault()
-    if (search === '') return onUISetAlert('Please enter something', 'error')
+    if (search.trim() === '')
+      return onUISetAlert('Please enter something', 'error')
 
-    await onGetUsers(search)
     onResetForm()
+    await onGetUsers(search.trim())
   }
 
   return (
-    <form onSubmit={onSearchSubmit}>
+    <form aria-label='form' onSubmit={onSearchSubmit}>
       <div className='form-control'>
         <div className='relative'>
           <input
