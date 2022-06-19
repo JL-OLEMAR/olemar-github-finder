@@ -8,7 +8,7 @@ export function UserItem({ user }) {
         <div>
           <div className='avatar'>
             <div className='rounded-full w-14 h-14 shadow'>
-              <img alt={`${user.login} Profile'`} src={user.avatar_url} />
+              <img alt={`${user.login} Profile`} src={user.avatar_url} />
             </div>
           </div>
         </div>

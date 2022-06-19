@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests in <UserItem /> should match the snapshot 1`] = `
+<div>
+  <div
+    class="card shadow-md compact side bg-base-100"
+  >
+    <div
+      class="flex-row items-center space-x-4 card-body"
+    >
+      <div>
+        <div
+          class="avatar"
+        >
+          <div
+            class="rounded-full w-14 h-14 shadow"
+          >
+            <img
+              alt="JL-OLEMAR Profile"
+              src="https://avatars.githubusercontent.com/u/71868068?v=4"
+            />
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2
+          class="card-title"
+        >
+          JL-OLEMAR
+        </h2>
+        <a
+          class="text-opacity-40 text-base-content"
+          href="/user/JL-OLEMAR"
+        >
+          Visit Profile
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;
