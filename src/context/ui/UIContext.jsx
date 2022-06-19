@@ -6,7 +6,7 @@ export const UIContext = createContext()
 
 const INITIAL_STATE = {
   alert: null,
-  loading: false
+  loading: true
 }
 
 export function UIProvider({ children }) {

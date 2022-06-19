@@ -18,7 +18,7 @@ export function UserList({ users, loading }) {
 
 UserList.defaultProps = {
   users: [],
-  loading: false
+  loading: true
 }
 
 UserList.propTypes = {
